@@ -7,11 +7,18 @@
 
 </head>
 <body >
-	<div id="c52ffb2dfab74f85a55b94b2f7777123" class="chart-container" style="width:100%; height:900%; "></div>
+	<div id="this_chart" class="chart-container" style="width:100%; height:900%; "></div>
     <script>
-        var chart_c52ffb2dfab74f85a55b94b2f7777123 = echarts.init(
-            document.getElementById('c52ffb2dfab74f85a55b94b2f7777123'), 'white', {renderer: 'canvas'});
-        var option_c52ffb2dfab74f85a55b94b2f7777123 = {
+        var chart_this_chart = echarts.init(
+            document.getElementById('this_chart'), 'white', {renderer: 'canvas'});
+            
+            chart_this_chart.on('click', function (params) {
+                    if (params.dataType === 'node') {
+                        navigator.clipboard.writeText(params.data.tooltip.replaceAll("<br/>", ""));
+                    }
+            });
+        
+        var option_this_chart = {
     "backgroundColor": "#f5f0d3",
     "animation": true,
     "animationThreshold": 2000,
@@ -1010,9 +1017,9 @@
         "order": "seriesAsc"
     }
 };
-        chart_c52ffb2dfab74f85a55b94b2f7777123.setOption(option_c52ffb2dfab74f85a55b94b2f7777123);
+        chart_this_chart.setOption(option_this_chart);
             window.addEventListener('resize', function(){
-                chart_c52ffb2dfab74f85a55b94b2f7777123.resize();
+                chart_this_chart.resize();
             })
     </script>
 </body>
